@@ -1,86 +1,72 @@
-# Python Password Manager
+```md
+# Super PM - Password Manager
 
-A simple local password manager written in Python and MariaDB. Uses [pbkdf2](https://en.wikipedia.org/wiki/PBKDF2) to derive a 256 bit key from a MASTER PASSWORD and DEVICE SECRET to use with AES-256 for encrypting/decrypting.
+Super PM adalah password manager yang dirancang untuk menyimpan, mengelola, dan melindungi password dengan aman.
 
+## 📌 Fitur Utama
+- 🔑 **add** : Menambahkan entri password baru  
+- 🔍 **extract** : Mengambil password berdasarkan filter  
+- 🔢 **generate** : Menghasilkan password acak  
+- 🔎 **check** : Mengecek kebocoran password  
+- 🚪 **exit** : Keluar dari program  
 
-# Installation
-You need to have python3 to run this on Windows, Linux or MacOS
-## Linux
-### Install Python Requirements
+## 🚀 Instalasi dan Persiapan
+
+### 1️⃣ Instal Python  
+Pastikan Python sudah terinstal di sistem. Jika belum, unduh dan instal dari [Python.org](https://www.python.org/downloads/).  
+
+### 2️⃣ Instal MariaDB dan Buat User
+```bash
+sudo apt update
+sudo apt install mariadb-server -y
 ```
-sudo apt install python3-pip
+Masuk ke MariaDB dan buat user:
+```sql
+CREATE DATABASE pm;
+CREATE USER 'pm'@'localhost' IDENTIFIED BY 'password_kuat';
+GRANT ALL PRIVILEGES ON pm.* TO 'pm'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+```
+
+### 3️⃣ Instal Dependensi Python
+Buat virtual environment dan instal dependensi:
+```bash
+python3 -m venv venv
+source venv/bin/activate  # Untuk Linux/macOS
+venv\Scripts\activate  # Untuk Windows
 pip install -r requirements.txt
 ```
 
-### MariaDB
-#### Install MariaDB on linux with apt
-```
-sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xcbcb082a1bb943db
-sudo add-apt-repository 'deb http://ftp.osuosl.org/pub/mariadb/repo/5.5/ubuntuprecise main'
-sudo apt-get update
-sudo apt-get install mariadb-server
-```
-#### Create user 'pm' and grant permissions
-**Login to mysql as root**
+## 🔧 Konfigurasi Super PM
 
+### ➖ Menghapus Konfigurasi Lama
+```bash
+python3 config.py delete
 ```
-sudo mysql -u root
-```
-**Create User**
-```
-CREATE USER 'pm'@localhost IDENTIFIED BY 'password';
-```
-**Grant privileges**
-```
-GRANT ALL PRIVILEGES ON *.* TO 'pm'@localhost IDENTIFIED BY 'password';
-```
+Konfirmasi dengan `y` untuk menghapus semua data.  
 
-### Pyperclip
-[Pyperclip](https://pypi.org/project/pyperclip/) is a python module used to copy data to the clipboard. If you get a "not implemented error", follow this simple fix: https://pyperclip.readthedocs.io/en/latest/index.html#not-implemented-error
+### ➕ Membuat Konfigurasi Baru
+```bash
+python3 config.py make
+```
+Ikuti instruksi untuk memasukkan **MASTER PASSWORD**.
 
-## Windows
-### Install Python Requirements
-```pip install -r requirements.txt```
+## ▶️ Menjalankan Super PM
+```bash
+python3 super_pm.py
+```
+Tampilan awal akan muncul dengan opsi fitur utama.
 
-### MariaDB
-#### Install
-Follow [these instructions](https://www.mariadbtutorial.com/getting-started/install-mariadb/) to install MariaDB on Windows
-#### Create user and grant privileges
-- Navigate to MariaDB bin directory
-```
-C:\Program Files\MariaDB\bin
-```
-- Login as root with the password you chose while installation
-```
-mysql.exe -u root -p
-```
-- Create user
-```
-CREATE USER 'pm'@localhost IDENTIFIED BY 'password';
-```
-- Grant privileges
-```
-GRANT ALL PRIVILEGES ON *.* TO 'pm'@localhost IDENTIFIED BY 'password';
+## ❌ Keluar dari Program
+Gunakan perintah berikut untuk keluar:  
+```bash
+Super PM > exit
 ```
 
+## 📜 Lisensi
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).  
 
-## Run
-### Configure
-
-You need to first configure the password manager by choosing a MASTER PASSWORD. This config step is only required to be executed once.
+---
+💡 Dibuat oleh **Sani, Zho & Riel**  
 ```
-python config.py make
-```
-The above command will make a new configuration by asking you to choose a MASTER PASSWORD.
-This will generate the DEVICE SECRET, create db and required tables.
-
-```
-python config.py delete
-```
-The above command will delete the existing configuration. Doing this will completely delete your device secret and all your entries and you will loose all your passwords. So be aware!
-
-```
-python config.py remake
-```
-The above command will first delete the existing configuration and create a fresh new configuration by asking you to choose a MASTER PASSWORD, generate the DEVICE SECRET, create the db and required tables.
-SSS
