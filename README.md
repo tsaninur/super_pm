@@ -21,7 +21,7 @@ sudo apt update
 sudo apt install mariadb-server -y
 ```
 Masuk ke MariaDB dan buat user:
-```sql
+```bash
 CREATE DATABASE pm;
 CREATE USER 'pm'@'localhost' IDENTIFIED BY 'password_kuat';
 GRANT ALL PRIVILEGES ON pm.* TO 'pm'@'localhost';
@@ -63,10 +63,5 @@ Gunakan perintah berikut untuk keluar:
 ```bash
 Super PM > exit
 ```
-
-## 📜 Lisensi
-Proyek ini dilisensikan di bawah [MIT License](LICENSE).  
-
----
 💡 Dibuat oleh **Sani, Zho & Riel**  
-```
+
