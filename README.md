@@ -39,23 +39,31 @@ pip install -r requirements.txt
 
 ## 🔧 Super PM Configuration
 
+### ➕ Create a New Configuration
+```bash
+python3 config.py make
+```
+
 ### ➖ Remove Existing Configuration
 ```bash
 python3 config.py delete
 ```
 Confirm with `y` to delete all data.  
 
-### ➕ Create a New Configuration
+
+### 🛠️ Edit Existing Configuration
 ```bash
-python3 config.py make
+python3 config.py remake
 ```
+Confirm with `y` to delete all data.  
+
 Follow the instructions to set up your **MASTER PASSWORD**.
 
 ## ▶️ Running Super PM
 ```bash
 python3 super_pm.py
 ```
-The main interface will appear with the key feature options.
+The main interface 🛠️🛠️ will appear with the key feature options.
 
 ## ❌ Exiting the Program
 Use the following command to exit:  
