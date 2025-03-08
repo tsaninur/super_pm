@@ -1,67 +1,65 @@
-```md
 # Super PM - Password Manager
 
-Super PM adalah password manager yang dirancang untuk menyimpan, mengelola, dan melindungi password dengan aman.
+Super PM is a password manager designed to securely store, manage, and protect passwords.
 
-## 📌 Fitur Utama
-- 🔑 **add** : Menambahkan entri password baru  
-- 🔍 **extract** : Mengambil password berdasarkan filter  
-- 🔢 **generate** : Menghasilkan password acak  
-- 🔎 **check** : Mengecek kebocoran password  
-- 🚪 **exit** : Keluar dari program  
+## 📌 Key Features
+- 🔑 **add** : Add a new password entry  
+- 🔍 **extract** : Retrieve passwords based on filters  
+- 🔢 **generate** : Generate a random password  
+- 🔎 **check** : Check for password breaches  
+- 🚪 **exit** : Exit the program  
 
-## 🚀 Instalasi dan Persiapan
+## 🚀 Installation and Setup
 
-### 1️⃣ Instal Python  
-Pastikan Python sudah terinstal di sistem. Jika belum, unduh dan instal dari [Python.org](https://www.python.org/downloads/).  
+### 1️⃣ Install Python  
+Ensure Python is installed on your system. If not, download and install it from [Python.org](https://www.python.org/downloads/).  
 
-### 2️⃣ Instal MariaDB dan Buat User
+### 2️⃣ Install MariaDB and Create a User
 ```bash
 sudo apt update
 sudo apt install mariadb-server -y
 ```
-Masuk ke MariaDB dan buat user:
+Access MariaDB and create a user:
 ```bash
 CREATE DATABASE pm;
-CREATE USER 'pm'@'localhost' IDENTIFIED BY 'password_kuat';
+CREATE USER 'pm'@'localhost' IDENTIFIED BY 'strong_password';
 GRANT ALL PRIVILEGES ON pm.* TO 'pm'@'localhost';
 FLUSH PRIVILEGES;
 EXIT;
 ```
 
-### 3️⃣ Instal Dependensi Python
-Buat virtual environment dan instal dependensi:
+### 3️⃣ Install Python Dependencies
+Create a virtual environment and install dependencies:
 ```bash
 python3 -m venv venv
-source venv/bin/activate  # Untuk Linux/macOS
-venv\Scripts\activate  # Untuk Windows
+source venv/bin/activate  # For Linux/macOS
+venv\Scripts\activate  # For Windows
 pip install -r requirements.txt
 ```
 
-## 🔧 Konfigurasi Super PM
+## 🔧 Super PM Configuration
 
-### ➖ Menghapus Konfigurasi Lama
+### ➖ Remove Existing Configuration
 ```bash
 python3 config.py delete
 ```
-Konfirmasi dengan `y` untuk menghapus semua data.  
+Confirm with `y` to delete all data.  
 
-### ➕ Membuat Konfigurasi Baru
+### ➕ Create a New Configuration
 ```bash
 python3 config.py make
 ```
-Ikuti instruksi untuk memasukkan **MASTER PASSWORD**.
+Follow the instructions to set up your **MASTER PASSWORD**.
 
-## ▶️ Menjalankan Super PM
+## ▶️ Running Super PM
 ```bash
 python3 super_pm.py
 ```
-Tampilan awal akan muncul dengan opsi fitur utama.
+The main interface will appear with the key feature options.
 
-## ❌ Keluar dari Program
-Gunakan perintah berikut untuk keluar:  
+## ❌ Exiting the Program
+Use the following command to exit:  
 ```bash
 Super PM > exit
 ```
-💡 Dibuat oleh **Sani, Zho & Riel**  
-
+💡 Created by **Sani, Zho & Riel**  
